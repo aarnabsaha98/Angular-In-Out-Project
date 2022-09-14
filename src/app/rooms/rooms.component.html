@@ -1,0 +1,39 @@
+<p>rooms works!</p>
+
+<h1>interpolation</h1>
+<h3 Hotel sname is><p>{{hotelName}}</p></h3>
+
+<div [hidden]="hideRooms">
+    <h1>property binding ;; must be a valid html tag property
+        <br />   with div tag  [innerText]="umberOFRooms">
+       </h1>
+    <div [innerText]="umberOFRooms"></div>
+</div>
+
+
+<h1>Event Binding</h1>
+<h4>Click to show Rooms </h4>
+<button (click)="toggle()">Toggle</button>
+
+<h3> Directives are use to change the behavior and appearance of DOM Element
+    <br />
+    Directives can implement all lifecycle hooks.
+    <br />
+    Directives can not have template
+
+    Types ::
+    1. Structural Directives
+    2. Attribute Directives
+</h3>
+
+<h1> Alternative of Hidden </h1>
+
+
+<div *ngIf="rooms.availableRooms > 5">
+    Booked Rooms : {{ rooms.bookedRooms > 21  }}
+    <br />
+    AvailableRooms : 
+     {{rooms.availableRooms}}
+</div>
+
+
