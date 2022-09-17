@@ -1,39 +1,95 @@
 <p>rooms works!</p>
 
-<h1>interpolation</h1>
-<h3 Hotel sname is><p>{{hotelName}}</p></h3>
+<h1>Data Binding </h1>
+
+<h2>Interpolation</h2>
+<h3 Hotel sname is>
+    <p>{{hotelName}}</p>
+</h3>
 
 <div [hidden]="hideRooms">
-    <h1>property binding ;; must be a valid html tag property
-        <br />   with div tag  [innerText]="umberOFRooms">
-       </h1>
+    <p>property binding ;; must be a valid html tag property
+        <br /> with div tag [innerText]="NumberOFRooms">
+    </p>
     <div [innerText]="umberOFRooms"></div>
 </div>
 
 
-<h1>Event Binding</h1>
+<h2>Event Binding</h2>
 <h4>Click to show Rooms </h4>
 <button (click)="toggle()">Toggle</button>
 
-<h3> Directives are use to change the behavior and appearance of DOM Element
+<h1>Directives</h1>
+<p> Directives are use to change the behavior and appearance of DOM Element</p>
+<div [ngStyle]="{
+    backgroundColor:'grey' 
+    ,border:'1px solid blue',
+    padding:'5px' ,
+    color:'black'
+    }">
     <br />
-    Directives can implement all lifecycle hooks.
+    A. Directives can implement all lifecycle hooks.
     <br />
-    Directives can not have template
+    B. Directives can not have template
+    <br />
+    There are two Types ::
+    <br />
+    1. Structural Directives : that has ability to modify i.e. add or remove element from the DOM element are structural
+    marked as (* at beginning of declaration i.e. *ngFor, *ngIf)
+    <br />
+    2. Attribute Directives :: add extra logic or modify the DOM But not able to add or remove. (ngClass, ngStyle)
 
-    Types ::
-    1. Structural Directives
-    2. Attribute Directives
-</h3>
+</div>
 
 <h1> Alternative of Hidden </h1>
 
 
-<div *ngIf="rooms.availableRooms > 5">
-    Booked Rooms : {{ rooms.bookedRooms > 21  }}
+<div *ngIf="rooms.availableRooms > 5" [ngStyle]="{color: rooms.availableRooms > 10 ? 'green' : 'steelblue'}">
+    Booked Rooms : {{ rooms.bookedRooms > 21 }}
+
     <br />
-    AvailableRooms : 
-     {{rooms.availableRooms}}
+    AvailableRooms :
+    {{rooms.availableRooms}}
+
+    <br />
+    <h3>Available Rooms List :: </h3>
 </div>
+<table>
+    <tr>
+        <th>Index</th>
+        <th> Even/Odd</th>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Room Price</th>
+        <th>Room Aminities</th>
+        <th>Room check In Time</th>
+        <th>Room check Out Time</th>
+    </tr>
+    <tr [ngClass]="e?'even' : 'odd'" *ngFor="let room of roomList ; let e = even; let o = odd; let i = index ">
+        <td>{{ i }}</td>
+        <td>{{ e ? "Even" : "Odd" }}</td>
+        <td> {{room.roomNumber}}</td>
+        <td>{{room.roomType |uppercase}}</td>
+        <td>{{room.price | currency : 'INR'}}</td>
+        <td>{{room.amrenities}}</td>
+        <td>{{room.checkInTime | date}}</td>
+        <td>{{room.checkOutTime | date}}</td>
+    </tr>
+</table>
 
 
+<h1>Pipes</h1>
+
+<p> User for data transformation  that does not changes the actual object</p>
+
+<p>Built-in pipe</p>
+<ul>
+    <li>DatePipe</li>
+    <li>UpperCasePipe</li>
+    <li>LowerCasePipe</li>
+    <li>CurrencyPipe</li>
+    <li>DecimalPipe</li>
+    <li>JsonPipe</li>
+    <li>SlicePipe</li>
+    <li>AsyncPipe</li>
+</ul>
